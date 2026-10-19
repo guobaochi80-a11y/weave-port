@@ -1,0 +1,9 @@
+name = "WeavePort"
+license = "MIT"
+licenselink = ""
+description = "极简暗色小说连载主题 · 黑色玫瑰自制"
+tags = ["minimal", "dark", "novel", "rss"]
+min_version = "0.146.0"
+
+[author]
+  name = "织主"

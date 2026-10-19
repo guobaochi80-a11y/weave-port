@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.Locale }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
+  {{ with .Description }}<meta name="description" content="{{ . }}">{{ end }}
+  <link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
+  {{ with .OutputFormats.Get "rss" }}<link rel="alternate" type="application/rss+xml" title="{{ site.Title }}" href="{{ .Permalink }}">{{ end }}
+</head>
+<body>
+  <header class="site-head">
+    <a class="site-title" href="{{ "" | relURL }}">{{ site.Title }}</a>
+    <nav>
+      {{ range site.Menus.main }}<a href="{{ .URL | relURL }}">{{ .Name }}</a>{{ end }}
+      <a href="{{ "index.xml" | relURL }}">RSS</a>
+    </nav>
+  </header>
+  <main>
+  {{ block "main" . }}{{ end }}
+  </main>
+  <footer class="site-foot">
+    <span>{{ site.Copyright }}</span>
+  </footer>
+</body>
+</html>

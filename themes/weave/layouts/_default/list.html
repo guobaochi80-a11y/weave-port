@@ -1,0 +1,12 @@
+{{ define "main" }}
+{{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+<section class="list">
+  {{ range (first 60 $pages) }}
+  <article class="item">
+    <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+    <div class="meta">{{ .Date.Format "2006-01-02" }}{{ with .Params.section }} · {{ . }}{{ end }}</div>
+    {{ with .Description }}<p class="desc">{{ . }}</p>{{ end }}
+  </article>
+  {{ end }}
+</section>
+{{ end }}

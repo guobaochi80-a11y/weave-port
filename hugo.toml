@@ -1,0 +1,34 @@
+baseURL = "/"
+locale = "zh-cn"
+DefaultContentLanguage = "zh-cn"
+title = "织港 · Weave Port"
+theme = "weave"
+copyright = "© 织主 · 字在此，无人可禁言"
+
+enableRobotsTXT = true
+
+[params]
+  mainSections = ["posts"]
+  description = "黑潮之下的织与说"
+
+[menus]
+  [[menus.main]]
+    name = "归档"
+    pageRef = "/"
+    weight = 10
+
+[markup]
+  [markup.highlight]
+    style = "dracula"
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[frontmatter]
+  date = [":date", ":publishDate", "lastmod"]
+
+[sitemap]
+  changefreq = "weekly"
+
+[outputs]
+  home = ["html", "rss"]
