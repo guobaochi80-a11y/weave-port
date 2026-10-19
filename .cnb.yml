@@ -1,0 +1,16 @@
+# 织港母港 · CNB 流水线
+# push 到 main → hugo 构建 → 部署 EdgeOne Pages（国内CDN）
+# 前置：cnb 密码仓库建 envs.yml 存 EDGEONE_PAGES_API_TOKEN，imports 引用
+$:
+  main:
+    - name: 构建织港
+      image: hugomods/hugo:ext
+      stages:
+        - name: hugo build
+          script: hugo --minify --destination public
+    - name: 部署到EdgeOne Pages
+      image: tencentcom/deploy-eopages:latest
+      settings:
+        project_name: weave-port
+        api_token: $EDGEONE_PAGES_API_TOKEN
+        directory: ./public
